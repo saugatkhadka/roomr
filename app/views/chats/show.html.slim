@@ -1,0 +1,16 @@
+div
+  h5 Chat with = @other_user.username
+  -if @chat.messages.any?
+    #messages
+      == render partial: 'messages/message', collection: @chat.messages.order(id: asc)
+  -else
+    #messages
+      p No Current Message.
+      p Start a conversation!
+
+== render partial: 'messages/message_form', locals: { message: @message, char: @chat}
+
+<script> 
+  createMessageChannel();
+  messageForm();
+</script>
