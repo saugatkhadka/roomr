@@ -7,6 +7,8 @@ default: &default
   public_output_path: packs
   cache_path: tmp/cache/webpacker
   check_yarn_integrity: false
+  # set to true to get more verbose console 
+  # outputs for webpacker compilation
   webpack_compile_output: false
 
   # Additional paths webpack should lookup modules
