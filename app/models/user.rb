@@ -19,11 +19,10 @@ class User < ApplicationRecord
     self.chats.each do |chat|
       # Returns all chat subscriptions that are not to themselves
       user_subscription = chat.subscriptions.where.not(user_id: self.id)
-
       # Adds all the users available for chat beside self to existing_chat_user 
       existing_chat_users.concat(
         user_subscription.map { |subscription| subscription.user }
-      )
+      ) 
     end
 
     # Returns only unique user chat instances

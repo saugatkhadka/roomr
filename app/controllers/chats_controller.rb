@@ -1,5 +1,6 @@
+require 'securerandom'
+
 class ChatsController < ApplicationController
-  require 'securerandom'
 
   before_action :authenticate_user!
 
@@ -11,22 +12,18 @@ class ChatsController < ApplicationController
   def create
     @other_user = User.find(params[:other_user])
     # has_secure_token in chat.rb model generates a unique aplhanumeric token
-    @chat = find_chat(@other_user) || Chat.new()
-    # if !@chat.persisted?
+    @chat = find_chat(@other_user) || Chat.new(identifier: SecureRandom.hex)
+    if !@chat.persisted?
       @chat.save
-      @chat.subscription.create(
-        user_id: current_user.id
-      )
-      @chat.subscriptions.create(
-        user_id: @other_user.id
-      )
+      @chat.subscriptions.create(user_id: current_user.id)
+      @chat.subscriptions.create(user_id: @other_user.id)
+    end
       
-      redirect_to user_chat_path(
-        current_user,
-        @chat,
-        :other_user => @other_user.id
-      )
-    # end
+    redirect_to user_chat_path(
+      current_user,
+      @chat,
+      :other_user => @other_user.id
+    )
   end
 
   def show
@@ -46,5 +43,7 @@ class ChatsController < ApplicationController
         end
       end
     end
+    # If current user is not found, returns nil
+    nil
   end
 end

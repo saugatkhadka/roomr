@@ -9,8 +9,8 @@ div
       p Start a conversation!
 
 == render partial: 'messages/message_form', locals: { message: @message, char: @chat}
-
-<script> 
-  createMessageChannel();
-  messageForm();
-</script>
+= link_to "Back to chat list", user_chats_path(current_user.id)
+/ <script> 
+/   / createMessageChannel();
+/   / messageForm();
+/ </script>
