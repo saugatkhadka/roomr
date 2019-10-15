@@ -1,17 +1,10 @@
-h4 Your Chats
-ul
-  -if @existing_chats_users
-    -@existing_chats_users.each do | other_user |
-      -if other_user != current_user
-        li
-          = link_to( user_chats_path( current_user, :other_user => other_user.id), method: :post ) do
-            = other_user.username
-h4 All Users
-ul
-  - User.all.each do | other_user |
-    - if other_user != current_user
-      li
-        = link_to( user_chats_path( current_user, :other_user => other_user.id ), method: :post ) do
-          = other_user.username
+== render 'sidenav'
 
-= link_to "Logout", destroy_user_session_path, method: :delete
+main
+  h4 Chat
+  .welcome-greet
+    p Start a conversation
+
+== render 'sidebar'
+
+

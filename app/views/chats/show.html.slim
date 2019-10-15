@@ -1,16 +1,21 @@
-div
-  h5 Chat with = @other_user.username
+== render 'sidenav'
+
+main
+  = link_to "Back to chat list", user_chats_path(current_user.id)
+
+  p Conversation with user
+  h4 = @other_user.username
   -if @chat.messages.any?
     #messages
       == render partial: 'messages/message', collection: @chat.messages.order(id: asc)
   -else
     #messages
-      p No Current Message.
-      p Start a conversation!
+      p No Current Message. Start a conversation!
+      .message-form-bottom
+        == render partial: 'messages/message_form', locals: { message: @message, char: @chat}
 
-== render partial: 'messages/message_form', locals: { message: @message, char: @chat}
-= link_to "Back to chat list", user_chats_path(current_user.id)
-/ <script> 
-/   / createMessageChannel();
-/   / messageForm();
-/ </script>
+
+== render 'sidebar'
+
+
+
