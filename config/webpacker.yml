@@ -9,7 +9,7 @@ default: &default
   check_yarn_integrity: false
   # set to true to get more verbose console 
   # outputs for webpacker compilation
-  webpack_compile_output: false
+  webpack_compile_output: true
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']

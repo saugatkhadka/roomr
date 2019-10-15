@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, uniqueness: true, presence: true
+  # Rails 6.1 explicitly asks for case_sensitive:true for uniqueness validator
+  validates :username, uniqueness: {case_sensitive: true}, presence: true
 end
