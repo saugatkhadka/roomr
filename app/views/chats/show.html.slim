@@ -12,8 +12,12 @@ main
     #new-messages
       p No Current Message. Start a conversation!
       .message-form-bottom
-        == render partial: 'messages/message_form', locals: { message: @message, chat: @chat }
-
+        / == render partial: 'messages/message_form', locals: { message: @message, chat: @chat }
+        = form_for @message, remote: true do |form|
+          = form.text_area :content, data: { textarea: "message" }, id: "new-message-textarea",
+          onkeypress: "process(event, this)" ,placeholder: "Enter to send", class: "form-control"
+          = form.hidden_field :chat_id, value: @chat.id
+          = form.submit "Send"
 
 == render 'sidebar'
 
