@@ -1,3 +1,13 @@
-p = @message.user.username
-  | :
-  = messsage.content
+/ p = message.content
+/ small = message.user.username
+<p>
+<strong> 
+= message.user.username
+<small>
+= message.created_at
+</small>
+</strong> 
+= message.content
+</p>
+
+/ p = "#{message.user.username}: #{message.content}"
