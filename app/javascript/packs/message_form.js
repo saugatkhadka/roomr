@@ -23,13 +23,32 @@ function messageForm(){
 
 // messageForm();
 
-function checkForKeyPress() {
-    
-    $('#new-message-textarea').on("keydown", function(e){
-        if(e.which == 13){
-            e.preventDefault(); // prevent another \n from being entered
-            this.submit();
-            this.trigger('reset');
-        }
-    })
+
+function process(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) { //Enter keycode
+        alert("Sending your Message : " + document.getElementById('new-message-textarea').value);
+    }
 }
+
+$('#new-message-textarea').on("keypress", function(e){
+    if(e.which == 13){
+        console.log("Enter pressed")
+        e.preventDefault(); // prevent another \n from being entered
+        this.submit();
+        this.trigger('reset');
+    }
+})
+
+// function checkForKeyPress() {
+    
+//     $('#new-message-textarea').on("keydown", function(e){
+//         if(e.which == 13){
+//             e.preventDefault(); // prevent another \n from being entered
+//             this.submit();
+//             this.trigger('reset');
+//         }
+//     })
+// }
+
+// checkForKeyPress();

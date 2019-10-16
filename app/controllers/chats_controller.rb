@@ -2,17 +2,19 @@ require 'securerandom'
 
 class ChatsController < ApplicationController
 
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @chats = current_user.chats
     @existing_chats_users = current_user.existing_chats_users
   end
 
+  # Joining the chat
   def create
     @other_user = User.find(params[:other_user])
     # has_secure_token in chat.rb model generates a unique aplhanumeric token
     @chat = find_chat(@other_user) || Chat.new(identifier: SecureRandom.hex)
+    # Creates a new subsscription for current and the other user with a single chat
     if !@chat.persisted?
       @chat.save
       @chat.subscriptions.create(user_id: current_user.id)
@@ -28,7 +30,7 @@ class ChatsController < ApplicationController
 
   def show
     @other_user = User.find(params[:other_user])
-    @chat = Chat.find_by(id: params[:id])
+    @chat = Chat.find(params[:id])
     @message = Message.new
   end
 
@@ -44,6 +46,6 @@ class ChatsController < ApplicationController
       end
     end
     # If current user is not found, returns nil
-    nil
+    return nil
   end
 end
