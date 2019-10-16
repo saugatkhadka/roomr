@@ -1,6 +1,7 @@
 == render 'sidenav'
 
-main
+/ .main{'data-behavior': 'messages'}
+<main data-behavior='messages'>
   = link_to "Back to chat list", user_chats_path(current_user.id)
 
   p Conversation with user
@@ -13,12 +14,15 @@ main
       p No Current Message. Start a conversation!
   .message-form-bottom
     / == render partial: 'messages/message_form', locals: { message: @message, chat: @chat }
-    = form_for @message, remote: true do |form|
-      = form.text_area :content, data: { textarea: "message" }, id: "new-message-textarea",
-      onkeypress: "process(event, this)" ,placeholder: "Enter to send", class: "form-control"
-      = form.hidden_field :chat_id, value: @chat.id
-      = form.submit "Send"
+    / = form_for @message, remote: true do |form|
+    /   = form.text_area :content, data: { textarea: "message" }, id: "new-message-textarea",
+    /   onkeypress: "process(event, this)" ,placeholder: "Enter to send", class: "form-control"
+    /   = form.hidden_field :chat_id, value: @chat.id
+    /   = form.submit "Send"
 
+    = form_for [@current_user, @chat, Message.new] do |f|
+      = f.text_area :content, rows: 1, class: "form-control", autofocus: true
+</main>
 == render 'sidebar'
 
 

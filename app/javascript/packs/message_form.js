@@ -1,25 +1,25 @@
-function messageForm(){
-  var shiftDown = false;
-  var chatForm = $("#new-message");
-  var messageBox = chatForm.children("textarea");
-  $(document).keypress(function (e) {
-      if(e.keyCode == 13) {
-          if(messageBox.is(":focus") && !shiftDown) {
-            e.preventDefault(); // prevent another \n from being entered
-            chatForm.submit();
-            $(chatForm).trigger('reset');
-          }
-      }
-  });
+// function messageForm(){
+//   var shiftDown = false;
+//   var chatForm = $("#new-message");
+//   var messageBox = chatForm.children("textarea");
+//   $(document).keypress(function (e) {
+//       if(e.keyCode == 13) {
+//           if(messageBox.is(":focus") && !shiftDown) {
+//             e.preventDefault(); // prevent another \n from being entered
+//             chatForm.submit();
+//             $(chatForm).trigger('reset');
+//           }
+//       }
+//   });
 
-  $(document).keydown(function (e) {
-      if(e.keyCode == 16) shiftDown = true;
-  });
+//   $(document).keydown(function (e) {
+//       if(e.keyCode == 16) shiftDown = true;
+//   });
 
-  $(document).keyup(function (e) {
-      if(e.keyCode == 16) shiftDown = false;
-  });
-}
+//   $(document).keyup(function (e) {
+//       if(e.keyCode == 16) shiftDown = false;
+//   });
+// }
 
 // messageForm();
 
@@ -52,3 +52,13 @@ function messageForm(){
 // }
 
 // checkForKeyPress();
+
+$( document ).ready(function() {
+  $('#new_message').on("keypress", function(e) {
+    // return console.log(e.keyCode);
+    if(e && e.keyCode == 13) {
+      e.preventDefault()
+      $(this).submit()
+    }
+  });
+});
