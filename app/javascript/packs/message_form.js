@@ -59,6 +59,7 @@ $( document ).ready(function() {
     if(e && e.keyCode == 13) {
       e.preventDefault()
       $(this).submit()
+      $('#new_message')[0].reset()
     }
   });
 });

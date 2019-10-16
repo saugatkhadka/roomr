@@ -32,6 +32,7 @@ class ChatsController < ApplicationController
     @other_user = User.find(params[:other_user])
     @chat = Chat.find(params[:id])
     @message = Message.new
+    @messages = @chat.messages.order(created_at: :desc).limit(100).reverse
     @existing_chats_users = current_user.existing_chats_users
   end
 

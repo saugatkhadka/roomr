@@ -7,14 +7,15 @@ class MessagesController < ApplicationController
     message.user = current_user
 
     if message.save
+      MessageRelayJob.perform_later(message)
       # Broadcast message to all clients connected to the channel. A single client
-      ActionCable.server.broadcast(
-        "message_#{ message_params[:chat_id] }",
-        message: message.content,
-        user: message.user.username
-      )
-    else 
-      redirect_to @chat
+      # ActionCable.server.broadcast(
+      #   "message_#{ message_params[:chat_id] }",
+      #   message: message.content,
+      #   user: message.user.username
+      # )
+    # else 
+    #   redirect_to @chat
     end
   end
 
