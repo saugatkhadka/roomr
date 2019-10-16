@@ -9,10 +9,10 @@ main
     #messages
       == render partial: 'messages/message', collection: @chat.messages.order(id: asc)
   -else
-    #messages
+    #new-messages
       p No Current Message. Start a conversation!
       .message-form-bottom
-        == render partial: 'messages/message_form', locals: { message: @message, char: @chat}
+        == render partial: 'messages/message_form', locals: { message: @message, chat: @chat }
 
 
 == render 'sidebar'

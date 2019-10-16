@@ -1,13 +1,13 @@
 function messageForm(){
   var shiftDown = false;
-  var chatForm = $("#new_message");
+  var chatForm = $("#new-message");
   var messageBox = chatForm.children("textarea");
   $(document).keypress(function (e) {
       if(e.keyCode == 13) {
           if(messageBox.is(":focus") && !shiftDown) {
-          	e.preventDefault(); // prevent another \n from being entered
-						chatForm.submit();
-						$(chatForm).trigger('reset');
+            e.preventDefault(); // prevent another \n from being entered
+            chatForm.submit();
+            $(chatForm).trigger('reset');
           }
       }
   });
@@ -21,5 +21,15 @@ function messageForm(){
   });
 }
 
-messageForm();
-console.log("It ran");
+// messageForm();
+
+function checkForKeyPress() {
+    
+    $('#new-message-textarea').on("keydown", function(e){
+        if(e.which == 13){
+            e.preventDefault(); // prevent another \n from being entered
+            this.submit();
+            this.trigger('reset');
+        }
+    })
+}

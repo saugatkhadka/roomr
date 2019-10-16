@@ -1,3 +1,3 @@
 = form_for @message, remote: true do |form|
-  = form.text_area :content, data: { textarea: "message" }, placeholder: "Enter to send", class: "form-control"
-  = form.hidden_field :chat_id, value: @chat.id
+  = form.text_area :content, data: { textarea: "message" }, id: "new-message-textarea", placeholder: "Enter to send", class: "form-control"
+  = form.hidden_field :chat_id, value: chat.id
