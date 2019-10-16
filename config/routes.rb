@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   # }
   
   resources :users do
-    resources :chats, only: [:index, :show, :create]
+    resources :chats, only: [:index, :show, :create] do 
+      resources :messages
+    end
   end
 
-  resources :messages, only:[:create]
 
   root 'chats#index'
 end
