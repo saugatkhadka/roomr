@@ -1,0 +1,108 @@
+// Place all the styles related to the Chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// @import 'fonts';
+
+// @font-face{
+//   font-family: 'Roboto Mono Regular';
+//   src: url('fonts/RobotoMono-Regular.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+body {
+  // font-family: "Roboto Mono Regular", sans-serif;
+}
+
+#sidenav {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fdba33;
+  overflow-x: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.user-list a {
+  padding: 6px 8px 6px 8px;
+  margin: 2px 2px;
+  background: #ffc758;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+}
+
+#sidenav a:hover {
+  color: #130808;
+}
+
+.content-bottom {
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: #fdba33;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+main {
+  margin: 0 180px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 20px 20px;
+}
+
+.message-form-bottom {
+  width: 70%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  display: block;
+}
+
+.block-links {
+  display: block;
+}
+
+// @media screen and (max-height: 450px) {
+//   #sidenav {padding-top: 15px;}
+//   #sidenav a {font-size: 18px;}
+// }
+
+#sidebar {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #fdba33;
+  overflow-x: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+#sidebar ul li {
+  padding: 6px 8px 6px 8px;
+  // border: #dbee33;
+  background: #fff09d;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 14px;
+  // color: #ff7b7b;
+  display: block;
+}
+
+#sidebar a:hover {
+  color: #130808;
+}

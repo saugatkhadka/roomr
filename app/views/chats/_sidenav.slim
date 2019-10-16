@@ -1,0 +1,11 @@
+#sidenav
+  h4 Your Chats
+  .user-list
+    -if @existing_chats_users
+      -@existing_chats_users.each do | other_user |
+        -if other_user != current_user
+          = link_to( user_chats_path( current_user, :other_user => other_user.id), method: :post ) do
+            = other_user.username
+  .content-bottom
+    = link_to "#{current_user.username}", edit_user_registration_path, class: "block-links"
+    = link_to "Logout", destroy_user_session_path, method: :delete, class: "block-links"
